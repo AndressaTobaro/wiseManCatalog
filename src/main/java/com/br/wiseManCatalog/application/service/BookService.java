@@ -7,7 +7,10 @@ import java.util.List;
 
 public interface BookService {
 
-    List<BookDTO> findAllBooks();
+    List<BookDTO> getAllBooks();
 
-    BookDTO findById(Long id);
+    BookDTO getById(Long id);
+
+    List<BookDTO> getByGenre(String genre);
+
 }
