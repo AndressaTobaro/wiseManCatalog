@@ -13,4 +13,7 @@ public interface BookService {
 
     List<BookDTO> getByGenre(String genre);
 
+    List<BookDTO> getByAuthor(String author);
+
+    List<BookDTO> getBooksAreSale(boolean sale);
 }

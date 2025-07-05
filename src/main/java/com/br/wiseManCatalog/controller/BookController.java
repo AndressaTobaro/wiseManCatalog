@@ -45,4 +45,23 @@ public class BookController {
         log.info("Response at getBookByGenre: {}", books);
         return ResponseEntity.ok(books);
     }
+
+    @GetMapping("/author")
+    public ResponseEntity<List<BookDTO>> getByAuthor(@RequestParam String author) {
+        if (author == null || author.isBlank()) {
+            throw new BadRequestException("Author parameter is mandatory");
+        }
+        log.info("New request received at getBookByAuthor, author: {}", author);
+        List<BookDTO> books = bookService.getByAuthor(author);
+        log.info("Response at getBookByAuthor: {}", books);
+        return ResponseEntity.ok(books);
+    }
+
+    @GetMapping("/sale")
+    public ResponseEntity<List<BookDTO>> getBooksAreSale(@RequestParam boolean sale) {
+        log.info("New request received at getBooksAreSale, author: {}", sale);
+        List<BookDTO> books = bookService.getBooksAreSale(sale);
+        log.info("Response at getBooksIsSale: {}", books);
+        return ResponseEntity.ok(books);
+    }
 }

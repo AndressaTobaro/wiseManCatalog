@@ -35,4 +35,7 @@ public class BookDTO implements Serializable {
     @JsonProperty
     private int rating;
 
+    @JsonProperty
+    private boolean sale;
+
 }

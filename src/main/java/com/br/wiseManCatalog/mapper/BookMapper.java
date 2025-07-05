@@ -12,6 +12,9 @@ public class BookMapper {
         dto.setDescription(book.getDescription());
         dto.setGenre(book.getGenre());
         dto.setAuthor(book.getAuthor());
+        dto.setPrice(book.getPrice());
+        dto.setRating(book.getRating());
+        dto.setSale(book.isSale());
         return dto;
     }
 }

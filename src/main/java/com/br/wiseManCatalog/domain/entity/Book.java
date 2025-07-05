@@ -30,10 +30,13 @@ public class Book {
     @Column
     private String description;
 
-    @Column
+    @Column(name = "price")
     private double price;
 
     @Column
     private int rating;
+
+    @Column
+    private boolean sale;
 
 }

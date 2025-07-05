@@ -47,6 +47,26 @@ public class BookServiceImpl implements BookService {
         return responseDTO;
     }
 
+    @Override
+    @Cacheable(value = "booksByAuthor", key = "#author", unless = "#result == null or #result.empty")
+    public List<BookDTO> getByAuthor(String author) {
+        List<Book> daoList = repository.findByAuthor(author);
+        verifyListIsEmpty(daoList);
+        List<BookDTO> responseDTO = new ArrayList<>();
+        daoList.forEach(bookDAO -> responseDTO.add(BookMapper.daoToResponseDto(bookDAO)));
+        return responseDTO;
+    }
+
+    @Override
+    @Cacheable(value = "booksIsSale", key = "#sale", unless = "#result == null or #result.empty")
+    public List<BookDTO> getBooksAreSale(boolean sale) {
+        List<Book> daoList = repository.findBySale(sale);
+        verifyListIsEmpty(daoList);
+        List<BookDTO> responseDTO = new ArrayList<>();
+        daoList.forEach(bookDAO -> responseDTO.add(BookMapper.daoToResponseDto(bookDAO)));
+        return responseDTO;
+    }
+
     private void verifyListIsEmpty(List<Book> books) {
         if (books.isEmpty()) {
             throw new NotFoundException("Book not found");
