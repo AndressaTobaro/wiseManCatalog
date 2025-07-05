@@ -1,4 +1,4 @@
-package com.br.wiseManCatalog.application.service.impl;
+package com.br.wiseManCatalog.application.service;
 
 
 import com.br.wiseManCatalog.application.dto.BookDTO;
@@ -9,4 +9,5 @@ public interface BookService {
 
     List<BookDTO> findAllBooks();
 
+    BookDTO findById(Long id);
 }
