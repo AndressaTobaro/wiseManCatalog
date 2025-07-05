@@ -1,0 +1,19 @@
+server:
+    port: 8080
+    servlet:
+        context-path: /wiseManCatalog
+
+spring:
+    application:
+        name: "wiseManCatalog"
+
+    http:
+        encoding:
+            charset: UTF-8
+            enabled: true
+            force: true
+
+    datasource:
+        url: jdbc:postgresql://localhost:5432/postgres
+        username: ${SPRING_DATASOURCE_USERNAME:postgres}
+        password: ${SPRING_DATASOURCE_PASSWORD:123456}
