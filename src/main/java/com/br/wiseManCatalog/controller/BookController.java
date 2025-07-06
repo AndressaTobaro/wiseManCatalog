@@ -58,8 +58,8 @@ public class BookController {
     }
 
     @GetMapping("/sale")
-    public ResponseEntity<List<BookDTO>> getBooksAreSale(@RequestParam boolean sale) {
-        log.info("New request received at getBooksAreSale, author: {}", sale);
+    public ResponseEntity<List<BookDTO>> getBooksAreSale(@RequestParam(required = false) boolean sale) {
+        log.info("New request received at getBooksAreSale, sale: {}", sale);
         List<BookDTO> books = bookService.getBooksAreSale(sale);
         log.info("Response at getBooksIsSale: {}", books);
         return ResponseEntity.ok(books);

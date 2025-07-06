@@ -30,7 +30,7 @@ public class Book {
     @Column
     private String description;
 
-    @Column(name = "price")
+    @Column
     private double price;
 
     @Column
