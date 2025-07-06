@@ -6,6 +6,8 @@ import jakarta.ws.rs.BadRequestException;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,9 +24,9 @@ public class BookController {
     private BookService bookService;
 
     @GetMapping
-    public List<BookDTO> getAllBooks() {
+    public ResponseEntity<Page<BookDTO>> getAllBooks(Pageable pageable) {
         log.info("New request received at getAllBooks");
-        return bookService.getAllBooks();
+        return ResponseEntity.ok(bookService.getAllBooks(pageable));
     }
 
     @GetMapping("/{id}")
@@ -58,7 +60,7 @@ public class BookController {
     }
 
     @GetMapping("/sale")
-    public ResponseEntity<List<BookDTO>> getBooksAreSale(@RequestParam(required = false) boolean sale) {
+    public ResponseEntity<List<BookDTO>> getBooksAreSale(@RequestParam(required = false, defaultValue = "true") boolean sale) {
         log.info("New request received at getBooksAreSale, sale: {}", sale);
         List<BookDTO> books = bookService.getBooksAreSale(sale);
         log.info("Response at getBooksIsSale: {}", books);

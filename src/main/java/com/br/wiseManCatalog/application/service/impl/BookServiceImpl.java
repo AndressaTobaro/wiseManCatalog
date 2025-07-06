@@ -9,6 +9,9 @@ import com.br.wiseManCatalog.mapper.BookMapper;
 import jakarta.ws.rs.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -22,11 +25,11 @@ public class BookServiceImpl implements BookService {
 
     @Override
     @Cacheable(value = "books", keyGenerator = "keyGenerator", unless = "#result == null or #result.empty")
-    public List<BookDTO> getAllBooks() {
-        List<Book> daoPage = repository.findAll();
+    public Page<BookDTO> getAllBooks(Pageable pageable) {
+        Page<Book> daoPage = repository.findAll(pageable);
         List<BookDTO> responseDTO = new ArrayList<>();
         daoPage.forEach(bookDAO -> responseDTO.add(BookMapper.daoToResponseDto(bookDAO)));
-        return responseDTO;
+        return new PageImpl<>(responseDTO, pageable, daoPage.getTotalElements());
     }
 
     @Override
@@ -58,7 +61,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    @Cacheable(value = "booksIsSale", key = "#sale", unless = "#result == null or #result.empty")
+    @Cacheable(value = "booksAreSale", key = "#sale", unless = "#result == null or #result.empty")
     public List<BookDTO> getBooksAreSale(boolean sale) {
         List<Book> daoList = repository.findBySale(sale);
         verifyListIsEmpty(daoList);
