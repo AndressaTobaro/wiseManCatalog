@@ -74,10 +74,10 @@ A API está pronta para evoluir conforme novas necessidades forem identificadas.
 ## Arquitetura de Solução e Arquitetura Técnica
 A solução implementada é uma API RESTful desenvolvida com foco em simplicidade, escalabilidade e facilidade de manutenção. As principais tecnologias utilizadas são:
 
-Java
-Spring Framework como framework para construção da API.
-Banco de dados (Postgres) para armazenamento das informações dos livros.
-Decisões de design envolveram a criação de endpoints claros, estrutura modular do código e uso de princípios de boas práticas para APIs REST, visando fácil evolução e integração com sistemas externos.
+- Java
+- Spring Framework como framework para construção da API.
+- Banco de dados (Postgres) para armazenamento das informações dos livros.
+- Decisões de design envolveram a criação de endpoints claros, estrutura modular do código e uso de princípios de boas práticas para APIs REST, visando fácil evolução e integração com sistemas externos.
 
 ## 📂 Banco de Dados: Por que usamos PostgreSQL?
 
@@ -101,7 +101,6 @@ O PostgreSQL é amplamente suportado por:
 
 * ORMs como **Hibernate / JPA**
 * Ferramentas de **migracão e versionamento de banco**
-* Extensões como `pg_trgm`, `uuid-ossp`, `PostGIS`
 * Suporte nativo a tipos como **JSON/JSONB**, arrays e enums
 
 #### ✅ Segurança e Controle de Acesso

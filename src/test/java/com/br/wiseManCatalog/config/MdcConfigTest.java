@@ -1,17 +1,17 @@
 package com.br.wiseManCatalog.config;
-import com.br.wiseManCatalog.config.MdcConfig;
+
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 import org.slf4j.MDC;
 
 import java.io.IOException;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.Mockito.*;
 
 class MdcConfigTest {
@@ -30,7 +30,7 @@ class MdcConfigTest {
     }
 
     @Test
-    void testDoFilterInternal_setsAndClearsMdcTraceId() throws ServletException, IOException {
+    void testDoFilterInternalSetsAndClearsMdcTraceId() throws ServletException, IOException {
         assertNull(MDC.get("traceId")); // Deve estar nulo antes
 
         mdcConfig.doFilterInternal(request, response, filterChain);
