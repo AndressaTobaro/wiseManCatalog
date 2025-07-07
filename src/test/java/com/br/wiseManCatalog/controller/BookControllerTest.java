@@ -7,11 +7,14 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.server.ResponseStatusException;
 
 
 import java.util.List;
@@ -88,6 +91,85 @@ public class BookControllerTest {
         assertEquals(200, response.getStatusCodeValue());
         assertEquals(1, response.getBody().size());
         verify(bookService, times(1)).getByAuthor(author);
+    }
+
+    @Test
+    void getBooksByGenreShouldThrowBadRequestWhenGenreIsNull() {
+        // Arrange
+        String genre = null;
+
+        // Act & Assert
+        ResponseStatusException exception = assertThrows(
+                ResponseStatusException.class,
+                () -> bookController.getBooksByGenre(genre)
+        );
+
+        assertEquals(HttpStatus.BAD_REQUEST, exception.getStatusCode());
+        assertEquals("Genre parameter is mandatory", exception.getReason());
+    }
+
+    @Test
+    void getBooksByGenreShouldThrowBadRequestWhenAuthorIsBlank() {
+        String genre = "   ";
+
+        ResponseStatusException exception = assertThrows(
+                ResponseStatusException.class,
+                () -> bookController.getBooksByGenre(genre)
+        );
+
+        assertEquals(HttpStatus.BAD_REQUEST, exception.getStatusCode());
+        assertEquals("Genre parameter is mandatory", exception.getReason());
+    }
+
+    @Test
+    void getBooksByAuthorShouldThrowBadRequestWhenAuthorIsNull() {
+        // Arrange
+        String author = null;
+
+        // Act & Assert
+        ResponseStatusException exception = assertThrows(
+                ResponseStatusException.class,
+                () -> bookController.getByAuthor(author)
+        );
+
+        assertEquals(HttpStatus.BAD_REQUEST, exception.getStatusCode());
+        assertEquals("Author parameter is mandatory", exception.getReason());
+    }
+
+    @Test
+    void getBooksByAuthorShouldThrowBadRequestWhenGenreIsBlank() {
+        String author = "   ";
+
+        ResponseStatusException exception = assertThrows(
+                ResponseStatusException.class,
+                () -> bookController.getByAuthor(author)
+        );
+
+        assertEquals(HttpStatus.BAD_REQUEST, exception.getStatusCode());
+        assertEquals("Author parameter is mandatory", exception.getReason());
+    }
+    @Test
+    void getBooksAreSaleShouldReturnBooksWhenSaleIsTrue() {
+        boolean sale = true;
+        List<BookDTO> mockBooks = List.of(new BookDTO(1L, "Book Title", "Author", "Genre", "Description", 50.00, 4, true));
+        Mockito.when(bookService.getBooksAreSale(sale)).thenReturn(mockBooks);
+
+        ResponseEntity<List<BookDTO>> response = bookController.getBooksAreSale(sale);
+
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(mockBooks, response.getBody());
+    }
+
+    @Test
+    void getBooksAreSaleShouldReturnBooksWhenSaleIsFalse() {
+        boolean sale = false;
+        List<BookDTO> mockBooks = List.of(new BookDTO(1L, "Book Title", "Author", "Genre", "Description", 50.00, 4, false));
+        Mockito.when(bookService.getBooksAreSale(sale)).thenReturn(mockBooks);
+
+        ResponseEntity<List<BookDTO>> response = bookController.getBooksAreSale(sale);
+
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(mockBooks, response.getBody());
     }
 
 }
