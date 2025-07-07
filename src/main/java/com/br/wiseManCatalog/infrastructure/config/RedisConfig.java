@@ -1,8 +1,8 @@
-package com.br.wiseManCatalog.config;
+package com.br.wiseManCatalog.infrastructure.config;
 
 
 import com.br.wiseManCatalog.application.dto.BookDTO;
-import com.br.wiseManCatalog.cache.PageSerializer;
+import com.br.wiseManCatalog.infrastructure.cache.PageSerializer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import org.springframework.cache.annotation.EnableCaching;

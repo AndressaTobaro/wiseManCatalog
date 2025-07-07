@@ -14,20 +14,9 @@ O wiseManCatalog é uma API projetada para fornecer informações sobre livros d
 
 ## Instalação
 
-1. Clone este repositório:
+Clone este repositório:
    ```bash
    git clone https://github.com/AndressaTobaro/wiseManCatalog.git
-   ```
-2. Instale as dependências:
-   ```bash
-   cd wiseManCatalog
-   # Exemplo com Node.js
-   npm install
-   ```
-
-3. Execute o projeto:
-   ```bash
-   npm start
    ```
 
 ## Endpoints
@@ -48,11 +37,15 @@ GET /books
 Resposta:
 [
   {
-    "id": 1,
-    "titulo": "O Senhor dos Anéis",
-    "autor": "J.R.R. Tolkien",
-    "ano": 1954
-  }
+        "id": 34,
+        "title": "Os Miseráveis",
+        "author": "Victor Hugo",
+        "genre": "Drama",
+        "description": "A luta de Jean Valjean pela redenção.",
+        "price": 88.0,
+        "rating": 5,
+        "sale": false
+    }
 ]
 ```
 
@@ -71,12 +64,15 @@ Integrar testes automatizados para garantir a qualidade do código.
 A API está pronta para evoluir conforme novas necessidades forem identificadas.
 
 
-## Arquitetura de Solução e Arquitetura Técnica
+## Tecnologias Utilizadas
 A solução implementada é uma API RESTful desenvolvida com foco em simplicidade, escalabilidade e facilidade de manutenção. As principais tecnologias utilizadas são:
 
-- Java
-- Spring Framework como framework para construção da API.
-- Banco de dados (Postgres) para armazenamento das informações dos livros.
+- Linguagem (versão): Java 17
+- Gerenciador de dependencias: maven
+- Frameworks: Spring Boot, Spring Security, Spring Data JPA, Spring Web 
+- Bibliotecas: Lombok, Hibernate Validator, PostgreSQL/H2, Jackson, springdoc-openapi, bibliotecas de teste (JUnit, Mockito)
+- Sistema de Gerenciamento de Banco de dados: PostgreSQL
+- Cache: Redis
 - Decisões de design envolveram a criação de endpoints claros, estrutura modular do código e uso de princípios de boas práticas para APIs REST, visando fácil evolução e integração com sistemas externos.
 
 ## 📂 Banco de Dados: Por que usamos PostgreSQL?
@@ -120,7 +116,7 @@ Apesar de seus benefícios, bancos **NoSQL** podem ser uma boa escolha em alguns
 
 ---
 
-#### ✅ Conclusão
+#### ✅ Conclusão do uso Postgres
 
 Escolhemos o **PostgreSQL** para este projeto por ser a melhor opção em termos de:
 
@@ -131,6 +127,81 @@ Escolhemos o **PostgreSQL** para este projeto por ser a melhor opção em termos
 
 Essa decisão garante manutenção facilitada, performance consistente e segurança na evolução do sistema.
 
+## Estrutura do Projeto
+
+Este projeto segue os princípios da **Clean Architecture**, promovendo separação de responsabilidades, baixo acoplamento e alta coesão entre as camadas. A arquitetura facilita testes, manutenção e escalabilidade.
+
+## 📁 Estrutura de Diretórios
+
+```
+src/
+└── main/
+    └── java/
+        └── com/
+            └── br/
+                └── wiseManCatalog/
+                    ├── application/
+                    │   ├── dto/               # DTOs para comunicação entre camadas
+                    │   └── service/           # Casos de uso (Application Services)
+                    │
+                    ├── domain/
+                    │   ├── model/             # Entidades e agregados do domínio
+                    │   ├── repository/        # Interfaces para persistência
+                    │   └── service/           # Regras de negócio puras
+                    │
+                    ├── infrastructure/
+                    │   ├── cache/             # Serializadores e componentes de cache
+                    │   └── config/            # Configurações de segurança, Swagger, Redis, etc
+                    │
+                    ├── controller/            # Controllers REST (camada de entrada)
+                    ├── mapper/                # Conversão entre entidades e DTOs
+                    │
+                    ├── handler/               # Tratamento global de exceções
+                    │
+                    └── WiseManCatalogApplication.java  # Classe principal do Spring Boot
+```
+
+## 🧠 Visão Conceitual
+
+```
+          +-----------------------------+
+          |        Controllers          |  ← Camada de entrada (adapter)
+          +-----------------------------+
+                      ↓
+          +-----------------------------+
+          |     Application Services    |  ← Casos de uso / orquestração
+          +-----------------------------+
+                      ↓
+          +-----------------------------+
+          |     Domain Models/Rules     |  ← Regras de negócio
+          +-----------------------------+
+                      ↓
+          +-----------------------------+
+          |   Infrastructure (DB/API)   |  ← Integrações técnicas e frameworks
+          +-----------------------------+
+```
+
+## 📦 Descrição das Camadas
+
+| Camada           | Responsabilidade                                                                 |
+|------------------|-----------------------------------------------------------------------------------|
+| `controller`     | Recebe requisições (ex: REST), valida dados e delega para os serviços de aplicação |
+| `application`    | Contém a lógica de aplicação, coordenando os serviços de domínio                   |
+| `domain`         | Contém regras de negócio puras, entidades, serviços e contratos                    |
+| `infrastructure` | Implementa acesso a banco de dados, cache, configurações e integrações externas    |
+
+---
+
+## ✅ Benefícios da Clean Architecture
+
+- Testes unitários facilitados
+- Baixo acoplamento entre regras de negócio e frameworks
+- Reutilização e manutenção facilitadas
+- Escalabilidade e flexibilidade em integrações (ex: trocar JPA por outro driver)
+
+---
+
+
 ## Como Contribuir
 
 1. Faça um fork deste repositório.
@@ -139,12 +210,18 @@ Essa decisão garante manutenção facilitada, performance consistente e seguran
 
 ## Autoria
 
-- [Andressa Tobaro](https://github.com/AndressaTobaro)
+[Andressa Tobaro](https://github.com/AndressaTobaro)
 
 ## Licença
 
 Este projeto ainda não possui uma licença definida.
 
 ---
+
+## Melhorias
+1. Incluir o método de Visualizados Recentemente
+
+---
+
 > Sinta-se à vontade para complementar este README com instruções específicas, exemplos de endpoints e quaisquer outras informações relevantes sobre seu projeto.
 

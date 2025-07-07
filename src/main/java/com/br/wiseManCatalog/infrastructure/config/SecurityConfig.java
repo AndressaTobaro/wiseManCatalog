@@ -1,4 +1,4 @@
-package com.br.wiseManCatalog.config;
+package com.br.wiseManCatalog.infrastructure.config;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

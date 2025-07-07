@@ -1,4 +1,4 @@
-package com.br.wiseManCatalog.config;
+package com.br.wiseManCatalog.infrastructure.config;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -15,7 +15,7 @@ import java.util.UUID;
 public class MdcConfig extends OncePerRequestFilter {
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+    public void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
         try {
             String uuid = UUID.randomUUID().toString();

@@ -1,8 +1,7 @@
 package com.br.wiseManCatalog.cache;
 
+import com.br.wiseManCatalog.infrastructure.cache.PageSerializer;
 import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -40,7 +39,6 @@ public class PageSerializerTest {
 
     @Test
     void testSerializeThrowsSerializationException() {
-        // Criamos um objeto que o ObjectMapper não consegue serializar
         Page<Object> page = new PageImpl<>(List.of(new Object() {
             private final Object circularRef = this; // força falha por referência circular
         }));

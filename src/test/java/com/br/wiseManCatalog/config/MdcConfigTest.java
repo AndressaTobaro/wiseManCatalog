@@ -1,5 +1,6 @@
 package com.br.wiseManCatalog.config;
 
+import com.br.wiseManCatalog.infrastructure.config.MdcConfig;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

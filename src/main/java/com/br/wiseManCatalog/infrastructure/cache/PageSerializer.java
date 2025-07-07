@@ -1,4 +1,4 @@
-package com.br.wiseManCatalog.cache;
+package com.br.wiseManCatalog.infrastructure.cache;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.type.TypeReference;
