@@ -37,11 +37,15 @@ GET /books
 Resposta:
 [
   {
-    "id": 1,
-    "titulo": "O Senhor dos Anéis",
-    "autor": "J.R.R. Tolkien",
-    "ano": 1954
-  }
+        "id": 34,
+        "title": "Os Miseráveis",
+        "author": "Victor Hugo",
+        "genre": "Drama",
+        "description": "A luta de Jean Valjean pela redenção.",
+        "price": 88.0,
+        "rating": 5,
+        "sale": false
+    }
 ]
 ```
 
