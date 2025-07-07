@@ -6,7 +6,6 @@ import com.br.wiseManCatalog.cache.PageSerializer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import org.springframework.cache.annotation.EnableCaching;
-import org.springframework.cache.interceptor.KeyGenerator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.domain.Page;
@@ -61,18 +60,5 @@ public class RedisConfig {
         module.addSerializer((Class<Page<?>>) (Class<?>) Page.class, new PageSerializer());
         objectMapper.registerModule(module);
         return objectMapper;
-    }
-
-    @Bean
-    public KeyGenerator keyGenerator() {
-        return (target, method, params) -> {
-            StringBuilder sb = new StringBuilder();
-            sb.append(target.getClass().getSimpleName()).append(".");
-            sb.append(method.getName()).append(".");
-            for (Object param : params) {
-                sb.append(param.toString()).append(".");
-            }
-            return sb.toString();
-        };
     }
 }
