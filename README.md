@@ -14,20 +14,9 @@ O wiseManCatalog é uma API projetada para fornecer informações sobre livros d
 
 ## Instalação
 
-1. Clone este repositório:
+Clone este repositório:
    ```bash
    git clone https://github.com/AndressaTobaro/wiseManCatalog.git
-   ```
-2. Instale as dependências:
-   ```bash
-   cd wiseManCatalog
-   # Exemplo com Node.js
-   npm install
-   ```
-
-3. Execute o projeto:
-   ```bash
-   npm start
    ```
 
 ## Endpoints
