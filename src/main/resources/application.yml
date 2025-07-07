@@ -1,57 +1,60 @@
 server:
-    port: 8080
-    servlet:
-        context-path: /wiseManCatalog
+  port: 8080
+  servlet:
+    context-path: /wiseManCatalog
 
 spring:
-    application:
-        name: "wiseManCatalog"
+  application:
+    name: "wiseManCatalog"
 
-    http:
-        encoding:
-            charset: UTF-8
-            enabled: true
-            force: true
-    sleuth:
-        sampler:
-            probability: 1.0
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+  sleuth:
+    sampler:
+      probability: 1.0
 
-    datasource:
-        url: jdbc:postgresql://localhost:5432/postgres
-        username: ${SPRING_DATASOURCE_USERNAME:postgres}
-        password: ${SPRING_DATASOURCE_PASSWORD:123456}
-    jpa:
-        hibernate:
-            ddl-auto: update
-        show-sql: true
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: ${SPRING_DATASOURCE_USERNAME:postgres}
+    password: ${SPRING_DATASOURCE_PASSWORD:123456}
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
 
-    data:
-        jdbc:
-            dialect: postgresql
+  data:
+    jdbc:
+      dialect: postgresql
 
-        redis:
-            host: localhost
+    redis:
+      host: localhost
 
-    cache:
-        type: redis
-        redis:
-            time-to-live: 60000
+  cache:
+    type: redis
+    redis:
+      time-to-live: 60000
 
-    health:
-        show-details: always
+  health:
+    show-details: always
 
 management:
-    endpoints:
-        web:
-            exposure:
-                include: "*"
-    health:
-        show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  health:
+    show-details: always
 
 logging:
-    pattern:
-        console: "%d{yyyy-MM-dd HH:mm:ss} - %X{traceId} - [%level] - %msg%n"
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %X{traceId} - [%level] - %msg%n"
 
 auth:
-    user: admin
-    pass: admin
+  user: admin
+  pass: admin
