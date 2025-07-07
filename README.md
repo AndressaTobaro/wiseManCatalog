@@ -223,5 +223,5 @@ Este projeto ainda não possui uma licença definida.
 
 ---
 
-> Sinta-se à vontade para complementar este README com instruções específicas, exemplos de endpoints e quaisquer outras informações relevantes sobre seu projeto.
+> Sinta-se à vontade para sugerir melhorias.
 
