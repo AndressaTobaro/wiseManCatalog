@@ -14,11 +14,25 @@ O wiseManCatalog é uma API projetada para fornecer informações sobre livros d
 
 ## Instalação
 
-Clone este repositório:
+1. Clone este repositório:
    ```bash
    git clone https://github.com/AndressaTobaro/wiseManCatalog.git
    ```
-
+2. Escolha a IDE de sua preferência
+3. Instale o Docker em sua máquina
+4. Instale as dependências executando o comando:
+   ```bash
+   mvn dependency:resolve -U
+   ```
+5. Para inicializar e executar todos os serviços definidos no arquivo docker-compose.yml, execute:
+   ```bash
+   docker-compose up
+   ```
+6. Para inicializar a aplicação você pode executar o comando:
+   ```bash
+   mvn spring-boot:run
+   ```
+   
 ## Endpoints
 
 > Os endpoints específicos da API devem ser detalhados aqui. Por favor, adicione exemplos de rotas, parâmetros e respostas. Exemplos:
