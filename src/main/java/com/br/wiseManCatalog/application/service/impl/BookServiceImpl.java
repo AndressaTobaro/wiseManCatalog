@@ -6,13 +6,14 @@ import com.br.wiseManCatalog.application.service.BookService;
 import com.br.wiseManCatalog.domain.entity.Book;
 import com.br.wiseManCatalog.domain.repository.BookRepository;
 import com.br.wiseManCatalog.mapper.BookMapper;
-import jakarta.ws.rs.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +37,7 @@ public class BookServiceImpl implements BookService {
     @Cacheable(value = "bookById", key = "#id", unless = "#result == null")
     public BookDTO getById(Long id){
         Book book = repository.findById(id)
-                .orElseThrow(() -> new NotFoundException("Book id not found"));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Book id not found"));
         return BookMapper.daoToResponseDto(book);
     }
 
@@ -72,7 +73,7 @@ public class BookServiceImpl implements BookService {
 
     private void verifyListIsEmpty(List<Book> books) {
         if (books.isEmpty()) {
-            throw new NotFoundException("Book not found");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Book not found");
         }
     }
 

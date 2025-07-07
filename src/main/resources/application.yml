@@ -22,16 +22,16 @@ spring:
         password: ${SPRING_DATASOURCE_PASSWORD:123456}
     jpa:
         hibernate:
-            ddl-auto: create-drop
-        properties:
-            hibernate:
-                dialect: org.hibernate.dialect.PostgreSQLDialect
+            ddl-auto: update
         show-sql: true
+
     data:
         jdbc:
             dialect: postgresql
+
         redis:
             host: localhost
+
     cache:
         type: redis
         redis:
@@ -39,3 +39,19 @@ spring:
 
     health:
         show-details: always
+
+management:
+    endpoints:
+        web:
+            exposure:
+                include: "*"
+    health:
+        show-details: always
+
+logging:
+    pattern:
+        console: "%d{yyyy-MM-dd HH:mm:ss} - %X{traceId} - [%level] - %msg%n"
+
+auth:
+    user: admin
+    pass: admin
