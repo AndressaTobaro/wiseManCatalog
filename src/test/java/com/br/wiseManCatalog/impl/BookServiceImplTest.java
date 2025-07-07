@@ -68,7 +68,7 @@ public class BookServiceImplTest {
     }
 
     @Test
-    void testGetById_WhenBookExists() {
+    void testGetByIdWhenBookExists() {
         try (MockedStatic<BookMapper> mockedStatic = mockStatic(BookMapper.class)) {
             mockedStatic.when(() -> BookMapper.daoToResponseDto(book)).thenReturn(bookDTO);
 

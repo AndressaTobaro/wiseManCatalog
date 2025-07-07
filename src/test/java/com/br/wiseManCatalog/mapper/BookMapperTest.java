@@ -17,6 +17,9 @@ public class BookMapperTest {
         book.setDescription("Book Description");
         book.setGenre("Fantasy");
         book.setAuthor("Author Name");
+        book.setPrice(55.60);
+        book.setRating(5);
+        book.setSale(true);
 
         BookDTO bookDTO = BookMapper.daoToResponseDto(book);
 
@@ -26,5 +29,9 @@ public class BookMapperTest {
         assertEquals(book.getDescription(), bookDTO.getDescription());
         assertEquals(book.getGenre(), bookDTO.getGenre());
         assertEquals(book.getAuthor(), bookDTO.getAuthor());
+        assertEquals(book.getPrice(), bookDTO.getPrice());
+        assertEquals(book.getRating(), bookDTO.getRating());
+        assertEquals(book.isSale(), bookDTO.isSale());
+
     }
 }
