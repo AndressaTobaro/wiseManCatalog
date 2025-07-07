@@ -18,11 +18,11 @@ insert into books (title, author, genre, description, price, rating, sale) value
 insert into books (title, author, genre, description, price, rating, sale) values ('It - A Coisa', 'Stephen King', 'Terror', 'Um grupo de amigos enfrenta uma entidade maligna em sua cidade.', 90.00, 5, true);
 insert into books (title, author, genre, description, price, rating, sale) values ('Misery', 'Stephen King', 'Suspense', 'Um escritor é sequestrado por sua fã número um.', 54.20, 4, true);
 insert into books (title, author, genre, description, price, rating, sale) values ('O Iluminado', 'Stephen King', 'Terror', 'Uma família isolada em um hotel enfrenta forças sobrenaturais.', 59.99, 5, true);
-insert into books (title, author, genre, description, price, rating, sale) values ('O Conto da Aia', 'Margaret Atwood', 'Distopia', 'Mulheres perdem seus direitos em uma teocracia opressora.', 49.90, 5, true);
+insert into books (title, author, genre, description, price, rating, sale) values ('O Conto da Aia', 'Margaret Atwood', 'Distopia', 'Mulheres perdem seus direitos em uma teocracia opressora.', 49.90, 5, false);
 insert into books (title, author, genre, description, price, rating, sale) values ('Neuromancer', 'William Gibson', 'Cyberpunk', 'Um hacker é contratado para uma missão perigosa no ciberespaço.', 68.00, 4, true);
 insert into books (title, author, genre, description, price, rating, sale) values ('Fundação', 'Isaac Asimov', 'Ficção Científica', 'Um matemático prevê a queda do império galáctico.', 70.00, 5, true);
 insert into books (title, author, genre, description, price, rating, sale) values ('Eu, Robô', 'Isaac Asimov', 'Ficção Científica', 'Contos sobre robôs e as três leis da robótica.', 55.00, 4, true);
-insert into books (title, author, genre, description, price, rating, sale) values ('Duna', 'Frank Herbert', 'Ficção Científica', 'Luta pelo controle do planeta desértico Arrakis.', 84.90, 5, true);
+insert into books (title, author, genre, description, price, rating, sale) values ('Duna', 'Frank Herbert', 'Ficção Científica', 'Luta pelo controle do planeta desértico Arrakis.', 84.90, 5, false);
 insert into books (title, author, genre, description, price, rating, sale) values ('Solaris', 'Stanisław Lem', 'Ficção Científica', 'Contato com um planeta consciente levanta dilemas existenciais.', 65.00, 4, true);
 insert into books (title, author, genre, description, price, rating, sale) values ('Frankenstein', 'Mary Shelley', 'Terror', 'Um cientista cria um monstro com partes de cadáveres.', 50.00, 5, true);
 insert into books (title, author, genre, description, price, rating, sale) values ('Drácula', 'Bram Stoker', 'Terror', 'A história do vampiro mais famoso da literatura.', 49.90, 5, true);
@@ -31,7 +31,7 @@ insert into books (title, author, genre, description, price, rating, sale) value
 insert into books (title, author, genre, description, price, rating, sale) values ('Admirável Mundo Novo', 'Aldous Huxley', 'Distopia', 'Uma sociedade onde a felicidade é obrigatória e controlada.', 47.90, 4, true);
 insert into books (title, author, genre, description, price, rating, sale) values ('Fahrenheit 451', 'Ray Bradbury', 'Distopia', 'Em um futuro onde livros são proibidos e queimados.', 45.00, 5, true);
 insert into books (title, author, genre, description, price, rating, sale) values ('Moby Dick', 'Herman Melville', 'Aventura', 'A obsessão do capitão Ahab por uma baleia branca.', 55.00, 4, true);
-insert into books (title, author, genre, description, price, rating, sale) values ('Os Miseráveis', 'Victor Hugo', 'Drama', 'A luta de Jean Valjean pela redenção.', 88.00, 5, true);
+insert into books (title, author, genre, description, price, rating, sale) values ('Os Miseráveis', 'Victor Hugo', 'Drama', 'A luta de Jean Valjean pela redenção.', 88.00, 5, false);
 insert into books (title, author, genre, description, price, rating, sale) values ('Inferno', 'Dan Brown', 'Suspense', 'Robert Langdon desvenda um enigma ligado a Dante Alighieri.', 52.90, 4, true);
 insert into books (title, author, genre, description, price, rating, sale) values ('O Símbolo Perdido', 'Dan Brown', 'Suspense', 'Mais uma corrida contra o tempo com simbologia e segredos.', 53.00, 4, true);
 insert into books (title, author, genre, description, price, rating, sale) values ('Anjos e Demônios', 'Dan Brown', 'Suspense', 'O Vaticano é ameaçado por uma antiga sociedade secreta.', 51.00, 4, true);
@@ -45,5 +45,5 @@ insert into books (title, author, genre, description, price, rating, sale) value
 insert into books (title, author, genre, description, price, rating, sale) values ('A Cabana', 'William P. Young', 'Religioso', 'Um pai em luto encontra Deus em uma cabana.', 40.00, 4, true);
 insert into books (title, author, genre, description, price, rating, sale) values ('A Sutil Arte de Ligar o F*da-se', 'Mark Manson', 'Autoajuda', 'Uma abordagem honesta sobre como lidar com a vida.', 48.00, 4, true);
 insert into books (title, author, genre, description, price, rating, sale) values ('Mindset', 'Carol Dweck', 'Psicologia', 'Como a mentalidade de crescimento pode mudar sua vida.', 50.00, 5, true);
-insert into books (title, author, genre, description, price, rating, sale) values ('O Poder do Hábito', 'Charles Duhigg', 'Psicologia', 'Como hábitos moldam nosso comportamento.', 52.00, 5, true);
+insert into books (title, author, genre, description, price, rating, sale) values ('O Poder do Hábito', 'Charles Duhigg', 'Psicologia', 'Como hábitos moldam nosso comportamento.', 52.00, 5, false);
 insert into books (title, author, genre, description, price, rating, sale) values ('Quem Pensa Enriquece', 'Napoleon Hill', 'Negócios', 'Princípios do sucesso e riqueza pessoal.', 49.00, 4, true);
